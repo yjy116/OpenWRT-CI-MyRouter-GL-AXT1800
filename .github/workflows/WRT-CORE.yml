@@ -190,8 +190,10 @@ jobs:
         run: |
           cd ./wrt/
 
-          make -j$(nproc)
-      bash Scripts/check_space.sh || true || make -j1 V=s
+          # 正常多线程编译，失败则退回单线程带详细日志
+          make -j$(nproc) || make -j1 V=s
+          # 编译完成后检查固件大小和 NAND 剩余空间
+          bash $GITHUB_WORKSPACE/Scripts/check_space.sh || true
 
       - name: Machine Information
         run: |
