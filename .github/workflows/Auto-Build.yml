@@ -43,7 +43,7 @@ jobs:
             echo "should_build=false" >> $GITHUB_OUTPUT
           fi
 
-  # 第二步：如果有更新，先清理旧 Release/Workflow（保留 1 个最新的）
+  # 第二步：如果有更新，先清理旧 Release/Workflow（保留 2 个最新的）
   clean:
     needs: check_updates
     if: needs.check_updates.outputs.should_build == 'true'
@@ -54,7 +54,7 @@ jobs:
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
           delete_releases: true
-          releases_keep_latest: 1   # ⭐ 只保留最新 1 个 Release
+          releases_keep_latest: 2   # ⭐ 只保留最新 2 个 Release
           delete_tags: true
           delete_workflows: true
           workflows_keep_day: 0
