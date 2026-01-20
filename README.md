@@ -218,14 +218,4 @@ Recovery:
 - Hold Reset while powering on → `http://192.168.1.1`
 
 ---
-
-# 🎉 完成！
-
-如需：
-
-- 自动生成 factory 固件  
-- 加载更多 WiFi/NSS 加速补丁  
-- 扩展 CI  
-- 添加构建徽章、Release 自动注释  
-
 都可以继续告诉我！
