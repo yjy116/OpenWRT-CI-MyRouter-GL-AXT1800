@@ -218,4 +218,3 @@ Recovery:
 - Hold Reset while powering on → `http://192.168.1.1`
 
 ---
-都可以继续告诉我！
