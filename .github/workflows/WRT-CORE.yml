@@ -155,6 +155,12 @@ jobs:
         run: |
           cd ./wrt/package/
 
+          # --- 插入修复代码开始 ---
+          # 移除 libubox 的 -Werror 限制，防止 GCC 14 编译报错
+          find ../feeds/ -name "Makefile" | xargs grep -l "PKG_NAME:=libubox" | xargs sed -i 's/-Werror -Wextra/-Wextra/g' || true
+          sed -i 's/-Werror -Wextra/-Wextra/g' libs/libubox/Makefile || true
+          # --- 插入修复代码结束 ---
+
           $GITHUB_WORKSPACE/Scripts/Packages.sh
           $GITHUB_WORKSPACE/Scripts/Handles.sh
 
